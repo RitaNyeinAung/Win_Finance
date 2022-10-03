@@ -1,0 +1,112 @@
+<template>
+      <div class="q-pa-md">
+         <div class="q-gutter-lg">
+            <p class="title_color">Occupation's Company Informations</p>
+            <div>
+                <span>Company Name / Business Information</span>
+                <q-input outlined v-model="business_information" />
+            </div>
+            <p class="title_color">Occupation's Company Address Informations</p>
+            <div>
+               <div style="display: flex">
+                  <label style="width: 50%;">Region</label>
+                  <label style="width: 50%;">City</label>
+                  <label style="width: 50%;">Township</label>
+               </div>
+               <div style="display: flex">
+                  <q-select
+                     outlined
+                     v-model="region"
+                     :options="regions"
+                     style="width: 50%;"
+                  />
+                  <q-select
+                     outlined
+                     v-model="city"
+                     :options="cities"
+                     style="width: 50%;margin: 0 5px;"
+                  />
+                  <q-select
+                     outlined
+                     v-model="township"
+                     :options="townships"
+                     style="width: 50%;"
+                  />
+               </div>
+            </div>
+            <div class="q-mt-md">
+                <q-input outlined v-model="street_address" placeholder="Street Address" />
+                <q-input outlined v-model="building_no" placeholder="Building No" />
+                <q-input outlined v-model="floor" placeholder="Floor" />
+            </div>
+            <div>
+                <span>Occupation</span>
+                <q-input outlined v-model="occupation" placeholder="Occupation" />
+            </div>
+            <div>
+                <span>Company HR Name</span>
+                <q-input outlined v-model="HR_name" placeholder="HR Name" />
+            </div>
+            <div>
+                <span>HR Phone</span>
+                <q-input outlined v-model="HR_phone" mask="##-#########" placeholder="09-" />
+            </div>
+         </div>
+      </div>
+</template>
+
+<script>
+export default {
+   data() {
+      return {
+        business_information: "",
+         region: "Choose",
+         regions: [
+            'Yangon', 'Mandalay', 'Naypitaw'
+         ],
+         city: "Choose",
+         cities: [
+            'Yangon', 'Mandalay', 'Naypitaw'
+         ],
+         township: "Choose",
+         townships: [
+            'Yangon', 'Mandalay', 'Naypitaw'
+         ],
+         street_address: "",
+         building_no: "",
+         floor: "",
+         occupation: "",
+         HR_name: "",
+         HR_phone: "",
+      }
+   },
+}
+</script>
+
+<style>
+.q-field__control {
+    color: #ccc !important;
+    height: 50px !important;
+    max-width: 100%;
+    outline: none;
+    background-color: #fff;
+}
+.q-field--auto-height .q-field__control, .q-field--auto-height .q-field__native {
+    min-height: 50px !important;
+}
+.q-field--outlined .q-field__control {
+    border-radius: 4px;
+    padding: 0 0 0 10px !important;
+}
+.items-start {
+    align-items: flex-start;
+    margin-top: 8px !important;
+}
+</style>
+
+<style scoped>
+.title_color {
+   color: #005198;
+   font-size: 16px;
+}
+</style>
