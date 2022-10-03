@@ -49,10 +49,10 @@
                         <q-radio dense v-model="ward_village_radio" val="Ward" label="Ward" style="width: 60%;" />
                         <q-radio dense v-model="ward_village_radio" val="Village" label="Village" />
                     </div>
-                    <q-input outlined v-model="ward_village_input" placeholder="Ward/Village" />
-                    <q-input outlined v-model="street_address" placeholder="Street Address" />
-                    <q-input outlined v-model="building_no" placeholder="Building No" />
-                    <q-input outlined v-model="floor" placeholder="Floor" />
+                    <q-input outlined v-model="ward_village_input" placeholder="Ward/Village" :rules="[val => !!val || 'Ward/Village is required']" />
+                    <q-input outlined v-model="street_address" placeholder="Street Address" :rules="[val => !!val || 'Street Address is required']" />
+                    <q-input outlined v-model="building_no" placeholder="Building No" :rules="[val => !!val || 'Building No is required']" />
+                    <q-input outlined v-model="floor" placeholder="Floor" :rules="[val => !!val || 'Floor is required']" />
                 </div>
             </div>
             <div class="q-mb-xl">
@@ -92,8 +92,8 @@
                         <label style="width: 50%;">Months</label>
                     </div>
                     <div style="display: flex">
-                        <q-input class="q-mr-sm" outlined v-model="years_stay" placeholder="..." style="width: 50%;" />
-                        <q-input outlined v-model="months_stay" placeholder="..." style="width: 50%;" />
+                        <q-input class="q-mr-sm" outlined v-model="years_stay" placeholder="..." style="width: 50%;" :rules="[val => !!val || 'Year is required']" />
+                        <q-input outlined v-model="months_stay" placeholder="..." style="width: 50%;" :rules="[val => !!val || 'Month is required']" />
                     </div>
                </div>
             </div>

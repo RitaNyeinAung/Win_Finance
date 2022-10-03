@@ -3,15 +3,15 @@
     <div class="q-gutter-lg">
       <div>
         <span>Business Unit</span>
-        <q-input outlined v-model="business_unit" placeholder="Business Unit" />
+        <q-input outlined v-model="business_unit" placeholder="Auto" :rules="[val => !!val || 'Business Unit is required']" />
       </div>
       <div>
         <span>Branch Name</span>
-        <q-input outlined v-model="branch_name" placeholder="Branch Name" />
+        <q-input outlined v-model="branch_name" placeholder="Auto" :rules="[val => !!val || 'Branch Name is required']" />
       </div>
       <div>
         <span>Name</span>
-        <q-input outlined v-model="full_name" placeholder="Full Name" />
+        <q-input outlined v-model="full_name" placeholder="Full Name" :rules="[val => !!val || 'Full Name is required']" />
       </div>
       <div>
         <label>Your NRC Number</label>
@@ -34,31 +34,31 @@
             :options="nationals"
             style="width: 25%;"
           />
-          <q-input outlined v-model="nrc_num" mask="######" style="width: 100%; margin-left: 5px;" />
+          <q-input outlined v-model="nrc_num" mask="######" style="width: 100%; margin-left: 5px;" :rules="[ val => val.length >= 6 || 'Please add minimum 6 numbers']" />
          </div>
       </div>
       <div>
         <span>Your Father Name</span>
-        <q-input outlined v-model="father_name" placeholder="Your Father Name" />
+        <q-input outlined v-model="father_name" placeholder="Your Father Name" :rules="[val => !!val || 'Father Name is required']" />
       </div>
       <div>
         <span>Phone Number</span>
-        <q-input outlined v-model="phone_num" mask="##-#########" placeholder="Phone Number" />
+        <q-input outlined v-model="phone_num" mask="##-#########" placeholder="Auto" :rules="[ val => val.length >= 12 || 'Please add minimum 11 numbers']" />
       </div>
       <div>
         <span>Other Phone Number</span>
-        <q-input outlined v-model="other_phone" mask="##-#########" placeholder="Other Phone Number" />
+        <q-input outlined v-model="other_phone" mask="##-#########" placeholder="Auto" :rules="[ val => val.length >= 12 || 'Please add minimum 11 numbers']" />
       </div>
       <div>
         <span>Date of Birth</span>
-        <q-input outlined v-model="birth_date" type="date" />
+        <q-input outlined v-model="birth_date" type="date" :rules="[val => !!val || 'Birth Date is required']" />
       </div>
       <div>
         <span>Spouse Name or PIC Name</span>
         <div style="display: flex;">
           <q-radio dense v-model="gender_id" val="U" label="U" color="black" />
           <q-radio dense v-model="gender_id" val="Daw" label="Daw" color="black" style="margin: 0 33px" />
-          <q-input outlined v-model="pic_name" style="width: 100%; " />
+          <q-input outlined v-model="pic_name" style="width: 100%;" :rules="[val => !!val || 'PIC Name is required']" />
         </div>
       </div>
       <div>
@@ -80,7 +80,7 @@
             v-model="national"
             :options="nationals"
           />
-          <q-input outlined v-model="pic_nrc_num" mask="######" style="width: 100%; margin-left: 5px;" />
+          <q-input outlined v-model="pic_nrc_num" mask="######" style="width: 100%; margin-left: 5px;" :rules="[ val => val.length >= 6 || 'Please add minimum 6 numbers']" />
          </div>
       </div>
     </div>

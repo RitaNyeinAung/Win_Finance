@@ -72,7 +72,7 @@
                   </q-card-section>
                </q-card>
 
-               <q-card class="my_card q-mb-md">
+               <q-card class="my_card q-mb-md" @click="toUploadDocument">
                   <q-card-section>
                      <div>
                         <img class="image" src="../../src/assets/Docunment_upload.jpg" />
@@ -128,6 +128,9 @@ export default {
       },
       toGuarantorCollage() {
          this.$router.push({ name: "GuarantorCollage" });
+      },
+      toUploadDocument() {
+         this.$router.push({ name: "UploadDocument" });
       }
    }
 }

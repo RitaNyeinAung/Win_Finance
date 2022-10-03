@@ -4,7 +4,7 @@
             <p class="title_color">Occupation's Company Informations</p>
             <div>
                 <span>Company Name / Business Information</span>
-                <q-input outlined v-model="business_information" />
+                <q-input outlined v-model="business_information" :rules="[val => !!val || 'Company Name / Business Information is required']" />
             </div>
             <p class="title_color">Occupation's Company Address Informations</p>
             <div>
@@ -35,21 +35,21 @@
                </div>
             </div>
             <div class="q-mt-md">
-                <q-input outlined v-model="street_address" placeholder="Street Address" />
-                <q-input outlined v-model="building_no" placeholder="Building No" />
-                <q-input outlined v-model="floor" placeholder="Floor" />
+                <q-input outlined v-model="street_address" placeholder="Street Address" :rules="[val => !!val || 'Street Address is required']" />
+                <q-input outlined v-model="building_no" placeholder="Building No" :rules="[val => !!val || 'Building No is required']" />
+                <q-input outlined v-model="floor" placeholder="Floor" :rules="[val => !!val || 'Floor is required']" />
             </div>
             <div>
                 <span>Occupation</span>
-                <q-input outlined v-model="occupation" placeholder="Occupation" />
+                <q-input outlined v-model="occupation" placeholder="Auto" :rules="[val => !!val || 'Occupation is required']" />
             </div>
             <div>
                 <span>Company HR Name</span>
-                <q-input outlined v-model="HR_name" placeholder="HR Name" />
+                <q-input outlined v-model="HR_name" placeholder="HR Name" :rules="[val => !!val || 'HR Name is required']" />
             </div>
             <div>
                 <span>HR Phone</span>
-                <q-input outlined v-model="HR_phone" mask="##-#########" placeholder="09-" />
+                <q-input outlined v-model="HR_phone" mask="##-#########" placeholder="09-" :rules="[ val => val.length >= 12 || 'Please add minimum 11 numbers']" />
             </div>
          </div>
       </div>

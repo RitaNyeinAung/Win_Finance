@@ -30,6 +30,11 @@ const routes = [
       component: () => import("../views/GuarantorCollage/GuarantorCollage.vue"),
    },
    {
+      path: "/UploadDocument",
+      name: "UploadDocument",
+      component: () => import("../views/UploadDocument/UploadDocument.vue"),
+   },
+   {
       path: "/SaveInformation",
       name: "SaveInformation",
       component: () => import("../components/Shared/SaveInformation.vue"),

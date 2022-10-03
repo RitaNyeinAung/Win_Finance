@@ -4,15 +4,15 @@
             <p class="title_color">Guarantor's Personal Informations</p>
             <div>
                 <span>Name</span>
-                <q-input outlined v-model="guarantor_name" placeholder="Name" />
+                <q-input outlined v-model="guarantor_name" placeholder="Name" :rules="[val => !!val || 'Name is required']" />
             </div>
             <div>
                 <span>Phone Number</span>
-                <q-input outlined v-model="guarantor_phone" mask="##-#########" placeholder="09-" />
+                <q-input outlined v-model="guarantor_phone" mask="##-#########" placeholder="09-" :rules="[ val => val.length >= 12 || 'Please add minimum 11 numbers']" />
             </div>
             <div>
                 <span>Date of Birth</span>
-                <q-input outlined v-model="guarantor_birth_date" type="date" />
+                <q-input outlined v-model="guarantor_birth_date" type="date" :rules="[val => !!val || 'Birth Date is required']" />
             </div>
             <div>
                 <label>NRC Number</label>
@@ -35,7 +35,7 @@
                     :options="nationals"
                     style="width: 25%;"
                 />
-                <q-input outlined v-model="nrc_num" mask="######" style="width: 100%; margin-left: 5px;" />
+                <q-input outlined v-model="nrc_num" mask="######" style="width: 100%; margin-left: 5px;" :rules="[ val => val.length >= 6 || 'Please add minimum 6 numbers']" />
                 </div>
             </div>
             <div class="q-mb-lg">

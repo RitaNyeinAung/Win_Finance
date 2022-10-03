@@ -4,15 +4,15 @@
             <p class="title_color">Emergency Contact</p>
             <div>
                <span>Name</span>
-               <q-input outlined v-model="emergency_name" placeholder="Full Name" />
+               <q-input outlined v-model="emergency_name" placeholder="Full Name" :rules="[val => !!val || 'Name is required']" />
             </div>
             <div>
                <span>Phone</span>
-               <q-input outlined v-model="emergency_phone_num" mask="##-#########" placeholder="09-" />
+               <q-input outlined v-model="emergency_phone_num" mask="##-#########" placeholder="09-" :rules="[ val => val.length >= 12 || 'Please add minimum 11 numbers']" />
             </div>
             <div>
                <span>Mobile</span>
-               <q-input outlined v-model="emergency_mobile" mask="##-#########" placeholder="09-" />
+               <q-input outlined v-model="emergency_mobile" mask="##-#########" placeholder="09-" :rules="[ val => val.length >= 12 || 'Please add minimum 11 numbers']" />
             </div>
             <p class="title_color">Address Of Contact Person</p>
             <div>
@@ -49,10 +49,10 @@
                      <q-radio dense v-model="ward_village_radio" val="Ward" label="Ward" style="width: 60%;" />
                      <q-radio dense v-model="ward_village_radio" val="Village" label="Village" />
                   </div>
-                  <q-input outlined v-model="ward_village_input" placeholder="Ward/Village" />
-                  <q-input outlined v-model="street_address" placeholder="Street Address" />
-                  <q-input outlined v-model="building_no" placeholder="Building No" />
-                  <q-input outlined v-model="floor" placeholder="Floor" />
+                  <q-input outlined v-model="ward_village_input" placeholder="Ward/Village" :rules="[val => !!val || 'Ward/Village is required']" />
+                  <q-input outlined v-model="street_address" placeholder="Street Address" :rules="[val => !!val || 'Street Address is required']" />
+                  <q-input outlined v-model="building_no" placeholder="Building No" :rules="[val => !!val || 'Building No is required']" />
+                  <q-input outlined v-model="floor" placeholder="Floor" :rules="[val => !!val || 'Floor is required']" />
                </div>
             </div>
             <div class="q-mb-md">
