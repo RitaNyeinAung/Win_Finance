@@ -11,11 +11,101 @@
                   <q-uploader
                      url="http://localhost:4444/upload"
                      style="width: 47%"
+                     auto-upload
                   />
                   <q-uploader
                      url="http://localhost:4444/upload"
                      style="width: 47%"
+                     auto-upload
                   />
+               </div>
+            </div>
+
+            <div class="q-mt-lg">
+               <div style="display: flex">
+                  <label class="text-center q-mb-sm" style="width: 50%;">Copy of Census</label>
+                  <label class="text-center q-mb-sm" style="width: 50%;">Selfie Photo</label>
+               </div>
+               <div style="display: flex; justify-content: space-between;">
+                  <q-uploader
+                     url="http://localhost:4444/upload"
+                     style="width: 47%"
+                     auto-upload
+                  />
+                  <q-uploader
+                     url="http://localhost:4444/upload"
+                     style="width: 47%"
+                     auto-upload
+                  />
+               </div>
+            </div>
+
+            <div class="q-mt-lg">
+               <div style="display: flex">
+                  <label class="text-center q-mb-sm" style="width: 50%;">Employee ID</label>
+                  <label class="text-center q-mb-sm" style="width: 50%;">HR or Company Recommendation</label>
+               </div>
+               <div style="display: flex; justify-content: space-between;">
+                  <q-uploader
+                     url="http://localhost:4444/upload"
+                     style="width: 47%"
+                     auto-upload
+                  />
+                  <q-uploader
+                     url="http://localhost:4444/upload"
+                     style="width: 47%"
+                     auto-upload
+                  />
+               </div>
+               <div style="display: flex">
+                  <span class="text-center q-my-sm" style="width: 50%; font-size: 12px;"></span>
+                  <span class="text-center q-my-sm" style="width: 50%; font-size: 12px;">(Experience, Salary, Position must be included)</span>
+               </div>
+            </div>
+
+            <div class="q-mt-lg">
+               <div style="display: flex">
+                  <label class="text-center q-mb-sm" style="width: 50%;">Electricity Bill or City Council Bill</label>
+                  <label class="text-center q-mb-sm" style="width: 50%;">Ward Recommendation Letter</label>
+               </div>
+               <div style="display: flex; justify-content: space-between;">
+                  <q-uploader
+                     url="http://localhost:4444/upload"
+                     style="width: 47%"
+                     auto-upload
+                  />
+                  <q-uploader
+                     url="http://localhost:4444/upload"
+                     style="width: 47%"
+                     auto-upload
+                  />
+               </div>
+               <div style="display: flex">
+                  <span class="text-center q-my-sm" style="width: 50%; font-size: 12px;"></span>
+                  <span class="text-center q-my-sm" style="width: 50%; font-size: 12px;">(Recent Bill as Proof of address)</span>
+               </div>
+            </div>
+
+            <div class="q-mt-lg">
+               <div style="display: flex">
+                  <label class="text-center q-mb-sm" style="width: 50%;">Original Documents Of Collateral</label>
+                  <label class="text-center q-mb-sm" style="width: 50%;">Photo of Current Home</label>
+               </div>
+               <div style="display: flex; justify-content: space-between;">
+                  <q-uploader
+                     url="http://localhost:4444/upload"
+                     style="width: 47%"
+                     auto-upload
+                  />
+                  <q-uploader
+                     url="http://localhost:4444/upload"
+                     style="width: 47%"
+                     auto-upload
+                  />
+               </div>
+               <div style="display: flex">
+                  <span class="text-center q-my-sm" style="width: 50%; font-size: 12px;"></span>
+                  <span class="text-center q-my-sm" style="width: 50%; font-size: 12px;">(e.g; House, Land, other surrounding photo)</span>
                </div>
             </div>
          </div>
@@ -58,8 +148,8 @@ export default {
     color: #333 !important;
 }
 .q-uploader__header-content {
-    padding: 4px !important;
-    align-items: center !important;
+    padding: 0 10px !important;
+    /* align-items: center !important; */
 }
 .q-uploader__subtitle {
     font-size: 12px;
@@ -78,16 +168,26 @@ export default {
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
     padding: 0 !important;
-    min-height: 80px;
+    min-height: 100px;
     flex: 1 1 auto;
 }
 .q-uploader__file--img {
     color: #fff;
-    height: 80px !important;
+    height: 130px !important;
     min-width: 0 !important;
     background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
+}
+.q-uploader__header .q-btn:first-child i.q-icon.notranslate.material-icons {
+    display: none !important;
+}
+.q-uploader__file--img .q-uploader__file-header {
+    padding-bottom: 24px;
+    background: none;
+}
+i.q-icon.notranslate.material-icons {
+    color: #333;
 }
 </style>
 
