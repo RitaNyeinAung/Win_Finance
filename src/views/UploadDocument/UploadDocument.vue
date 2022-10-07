@@ -38,9 +38,9 @@
       <template v-slot:navigation>
         <q-stepper-navigation>
           <div class="button_group text-center q-mt-md">
-            <q-btn v-if="step != 3" @click="$refs.stepper.previous()" class="button_color" text-color="black" label="Back" no-caps />
-            <q-btn v-if="step != 3" @click="$refs.stepper.next()" class="button_color" text-color="black" label="Next" no-caps />
-            <q-btn v-else @click="goSaveInformation" class="submit_button" text-color="black" label="Submit" no-caps />
+            <q-btn v-if="step > 1" @click="$refs.stepper.previous()" class="custom_button" text-color="black" label="Back" no-caps />
+            <q-btn v-if="step != 3" @click="$refs.stepper.next()" class="custom_button" text-color="black" label="Next" no-caps />
+            <q-btn v-if="step === 3" @click="goSaveInformation" class="custom_button" text-color="black" label="Submit" no-caps />
           </div>
         </q-stepper-navigation>
       </template>
@@ -122,16 +122,10 @@ export default {
 .button_group {
   margin-bottom: 60px;
 }
-.button_color {
+.custom_button {
   width: 40%;
   height: 50px;
   margin: 0 10px;
-  border-radius: 8px;
-  background: linear-gradient(120.26deg, #F4D9A9 35.44%, #CBCBBC 75.7%);
-}
-.submit_button {
-  width: 100%;
-  height: 50px;
   border-radius: 8px;
   background: linear-gradient(120.26deg, #F4D9A9 35.44%, #CBCBBC 75.7%);
 }

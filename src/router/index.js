@@ -25,9 +25,10 @@ const routes = [
       component: () => import("../views/GuarantorFamily/GuarantorFamily.vue"),
    },
    {
-      path: "/GuarantorCollage",
-      name: "GuarantorCollage",
-      component: () => import("../views/GuarantorCollage/GuarantorCollage.vue"),
+      path: "/GuarantorColleague",
+      name: "GuarantorColleague",
+      component: () =>
+         import("../views/GuarantorColleague/GuarantorColleague.vue"),
    },
    {
       path: "/UploadDocument",

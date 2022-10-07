@@ -4,11 +4,11 @@
          <div class="q-py-md text-center text-white custom_font">
             <span>Total Finish</span>
             <br />
-            <span>50/100</span>
+            <span>{{ total_finish_average }}</span>
          </div>
          <div class="q-pt-sm q-pb-md q-px-lg finish_progress">
             <div>
-               <span class="text-white float-right">50%</span>
+               <span class="text-white float-right">{{ total_finish_percent }}</span>
                <q-linear-progress rounded white size="8px" :value="total_finish_progress" />
             </div>
          </div>
@@ -26,8 +26,8 @@
                         <img class="image" src="../../src/assets/Applicant_Information.jpg" />
                      </div>
                      <div class="text-center">
-                        <span class="text-green">25%</span>
-                        <q-linear-progress rounded class="q-mt-sm q-mb-sm mini_progress" white size="6px" :value="applicant_percent" />
+                        <span class="text-green">{{ applicant_percent }}</span>
+                        <q-linear-progress rounded class="q-mt-sm q-mb-sm mini_progress" white size="6px" :value="applicant_progress" />
                         <span class="custom_size">Applicant Information</span>
                      </div>
                   </q-card-section>
@@ -39,8 +39,8 @@
                         <img class="image" src="../../src/assets/Occupation_Information.jpg" />
                      </div>
                      <div class="text-center">
-                        <span class="text-green">100%</span>
-                        <q-linear-progress rounded class="q-mt-sm q-mb-sm mini_progress" white size="6px" :value="occupation_percent" />
+                        <span class="text-green">{{ occupation_percent }}</span>
+                        <q-linear-progress rounded class="q-mt-sm q-mb-sm mini_progress" white size="6px" :value="occupation_progress" />
                         <span class="custom_size">Occupation Information</span>
                      </div>
                   </q-card-section>
@@ -52,22 +52,22 @@
                         <img class="image" src="../../src/assets/Gurantar_family.jpg" />
                      </div>
                      <div class="text-center">
-                        <span class="text-green">50%</span>
-                        <q-linear-progress rounded class="q-mt-sm q-mb-sm mini_progress" white size="6px" :value="gurantar_percent" />
+                        <span class="text-green">{{ guarantor_percent }}</span>
+                        <q-linear-progress rounded class="q-mt-sm q-mb-sm mini_progress" white size="6px" :value="guarantor_progress" />
                         <span class="custom_size">Guarantor_Family</span>
                      </div>
                   </q-card-section>
                </q-card>
 
-               <q-card class="my_card q-mb-md" @click="toGuarantorCollage">
+               <q-card class="my_card q-mb-md" @click="toGuarantorColleague">
                   <q-card-section>
                      <div>
                         <img class="image" src="../../src/assets/gurantar.jpg" />
                      </div>
                      <div class="text-center">
-                        <span class="text-green">10%</span>
-                        <q-linear-progress rounded class="q-mt-sm q-mb-sm mini_progress" white size="6px" :value="collage_percent" />
-                        <span class="custom_size">Guarantor_Collage</span>
+                        <span class="text-green">{{ colleague_percent }}</span>
+                        <q-linear-progress rounded class="q-mt-sm q-mb-sm mini_progress" white size="6px" :value="colleague_progress" />
+                        <span class="custom_size">Guarantor_Colleague</span>
                      </div>
                   </q-card-section>
                </q-card>
@@ -78,8 +78,8 @@
                         <img class="image" src="../../src/assets/Docunment_upload.jpg" />
                      </div>
                      <div class="text-center">
-                        <span class="text-green">60%</span>
-                        <q-linear-progress rounded class="q-mt-sm q-mb-sm mini_progress" white size="6px" :value="upload_percent" />
+                        <span class="text-green">{{ upload_percent }}</span>
+                        <q-linear-progress rounded class="q-mt-sm q-mb-sm mini_progress" white size="6px" :value="upload_progress" />
                         <span class="custom_size">Upload Document</span>
                      </div>
                   </q-card-section>
@@ -107,12 +107,19 @@ export default {
    data() {
       return {
          title: "HP Document",
+         total_finish_average: "50/100",
+         total_finish_percent: "50%",
          total_finish_progress: 0.5,
-         applicant_percent: 0.25,
-         occupation_percent: 1,
-         gurantar_percent: 0.5,
-         collage_percent: 0.1,
-         upload_percent: 0.6,
+         applicant_percent: "25%",
+         applicant_progress: 0.25,
+         occupation_percent: "100%",
+         occupation_progress: 1,
+         guarantor_percent: "50%",
+         guarantor_progress: 0.5,
+         colleague_percent: "10%",
+         colleague_progress: 0.1,
+         upload_percent: "60%",
+         upload_progress: 0.6,
          check_agree: false,
       }
    },
@@ -126,8 +133,8 @@ export default {
       toGuarantorFamily() {
          this.$router.push({ name: "GuarantorFamily" });
       },
-      toGuarantorCollage() {
-         this.$router.push({ name: "GuarantorCollage" });
+      toGuarantorColleague() {
+         this.$router.push({ name: "GuarantorColleague" });
       },
       toUploadDocument() {
          this.$router.push({ name: "UploadDocument" });

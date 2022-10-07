@@ -3,62 +3,62 @@
     <div class="q-gutter-lg">
       <div>
         <span>Business Unit</span>
-        <q-input outlined v-model="business_unit" placeholder="Auto" :rules="[val => !!val || 'Business Unit is required']" />
+        <q-input outlined v-model="applicant_step_one.business_unit" placeholder="Auto" :rules="[val => !!val || 'Business Unit is required']" />
       </div>
       <div>
         <span>Branch Name</span>
-        <q-input outlined v-model="branch_name" placeholder="Auto" :rules="[val => !!val || 'Branch Name is required']" />
+        <q-input outlined v-model="applicant_step_one.branch_name" placeholder="Auto" :rules="[val => !!val || 'Branch Name is required']" />
       </div>
       <div>
         <span>Name</span>
-        <q-input outlined v-model="full_name" placeholder="Full Name" :rules="[val => !!val || 'Full Name is required']" />
+        <q-input outlined v-model="applicant_step_one.full_name" placeholder="Full Name" :rules="[val => !!val || 'Full Name is required']" />
       </div>
       <div>
         <label>Your NRC Number</label>
          <div style="display: flex">
            <q-select
             outlined
-            v-model="state_num"
+            v-model="applicant_step_one.state_num"
             :options="states"
             style="width: 20%;"
           />
           <q-select
             outlined
-            v-model="township_name"
+            v-model="applicant_step_one.township_name"
             :options="townships"
             style="width: 30%;margin: 0 5px;"
           />
           <q-select
             outlined
-            v-model="national"
+            v-model="applicant_step_one.national"
             :options="nationals"
             style="width: 25%;"
           />
-          <q-input outlined v-model="nrc_num" mask="######" style="width: 100%; margin-left: 5px;" :rules="[ val => val.length >= 6 || 'Please add minimum 6 numbers']" />
+          <q-input outlined v-model="applicant_step_one.nrc_num" mask="######" style="width: 100%; margin-left: 5px;" :rules="[ val => val.length >= 6 || 'Please add minimum 6 numbers']" />
          </div>
       </div>
       <div>
         <span>Your Father Name</span>
-        <q-input outlined v-model="father_name" placeholder="Your Father Name" :rules="[val => !!val || 'Father Name is required']" />
+        <q-input outlined v-model="applicant_step_one.father_name" placeholder="Your Father Name" :rules="[val => !!val || 'Father Name is required']" />
       </div>
       <div>
         <span>Phone Number</span>
-        <q-input outlined v-model="phone_num" mask="##-#########" placeholder="Auto" :rules="[ val => val.length >= 12 || 'Please add minimum 11 numbers']" />
+        <q-input outlined v-model="applicant_step_one.phone_num" mask="###########" placeholder="Auto" :rules="[ val => val.length >= 7 && val.length <= 11 || 'Please add correct phone number']" />
       </div>
       <div>
         <span>Other Phone Number</span>
-        <q-input outlined v-model="other_phone" mask="##-#########" placeholder="Auto" :rules="[ val => val.length >= 12 || 'Please add minimum 11 numbers']" />
+        <q-input outlined v-model="applicant_step_one.other_phone" mask="###########" placeholder="Auto" :rules="[ val => val.length >= 7 && val.length <= 11 || 'Please add correct phone number']" />
       </div>
       <div>
         <span>Date of Birth</span>
-        <q-input outlined v-model="birth_date" type="date" :rules="[val => !!val || 'Birth Date is required']" />
+        <q-input outlined v-model="applicant_step_one.birth_date" type="date" :rules="[val => !!val || 'Birth Date is required']" />
       </div>
       <div>
         <span>Spouse Name or PIC Name</span>
         <div style="display: flex;">
-          <q-radio dense v-model="gender_id" val="U" label="U" color="black" />
-          <q-radio dense v-model="gender_id" val="Daw" label="Daw" color="black" style="margin: 0 33px" />
-          <q-input outlined v-model="pic_name" style="width: 100%;" :rules="[val => !!val || 'PIC Name is required']" />
+          <q-radio dense v-model="applicant_step_one.gender_id" val="U" label="U" color="black" />
+          <q-radio dense v-model="applicant_step_one.gender_id" val="Daw" label="Daw" color="black" style="margin: 0 33px" />
+          <q-input outlined v-model="applicant_step_one.pic_name" style="width: 100%;" :rules="[val => !!val || 'PIC Name is required']" />
         </div>
       </div>
       <div>
@@ -66,21 +66,21 @@
          <div style="display: flex">
            <q-select
             outlined
-            v-model="state_num"
+            v-model="applicant_step_one.state_num"
             :options="states"
           />
           <q-select
             outlined
-            v-model="township_name"
+            v-model="applicant_step_one.township_name"
             :options="townships"
             style="margin: 0 5px;"
           />
           <q-select
             outlined
-            v-model="national"
+            v-model="applicant_step_one.national"
             :options="nationals"
           />
-          <q-input outlined v-model="pic_nrc_num" mask="######" style="width: 100%; margin-left: 5px;" :rules="[ val => val.length >= 6 || 'Please add minimum 6 numbers']" />
+          <q-input outlined v-model="applicant_step_one.pic_nrc_num" mask="######" style="width: 100%; margin-left: 5px;" :rules="[ val => val.length >= 6 || 'Please add minimum 6 numbers']" />
          </div>
       </div>
     </div>
@@ -91,29 +91,31 @@
 export default {
    data () {
     return {
-      business_unit: "",
-      branch_name: "",
-      full_name: "",
-      state_num: "1/",
       states: [
         '1/', '2/', '3/', '4/', '5/'
       ],
-      township_name: "YaMaNa",
       townships: [
         'MaAhNa', 'AhGaPa'
       ],
-      national: "(N)",
       nationals: [
         '(N)', 'Other'
       ],
-      nrc_num: "",
-      father_name: "",
-      phone_num: "",
-      other_phone: "",
-      birth_date: "",
-      pic_name: "",
-      gender_id: "U",
-      pic_nrc_num: "",
+      applicant_step_one: {
+        business_unit: "",
+        branch_name: "",
+        full_name: "",
+        state_num: "1/",
+        township_name: "YaMaNa",
+        national: "(N)",
+        nrc_num: "",
+        father_name: "",
+        phone_num: "",
+        other_phone: "",
+        birth_date: "",
+        pic_name: "",
+        gender_id: "U",
+        pic_nrc_num: "",
+      },
     }
   },
 }

@@ -4,7 +4,7 @@
             <p class="title_color">Occupation's Company Informations</p>
             <div>
                 <span>Company Name / Business Information</span>
-                <q-input outlined v-model="business_information" :rules="[val => !!val || 'Company Name / Business Information is required']" />
+                <q-input outlined v-model="occupation_step_one.business_information" :rules="[val => !!val || 'Company Name / Business Information is required']" />
             </div>
             <p class="title_color">Occupation's Company Address Informations</p>
             <div>
@@ -16,40 +16,40 @@
                <div style="display: flex">
                   <q-select
                      outlined
-                     v-model="region"
+                     v-model="occupation_step_one.region"
                      :options="regions"
                      style="width: 50%;"
                   />
                   <q-select
                      outlined
-                     v-model="city"
+                     v-model="occupation_step_one.city"
                      :options="cities"
                      style="width: 50%;margin: 0 5px;"
                   />
                   <q-select
                      outlined
-                     v-model="township"
+                     v-model="occupation_step_one.township"
                      :options="townships"
                      style="width: 50%;"
                   />
                </div>
             </div>
             <div class="q-mt-md">
-                <q-input outlined v-model="street_address" placeholder="Street Address" :rules="[val => !!val || 'Street Address is required']" />
-                <q-input outlined v-model="building_no" placeholder="Building No" :rules="[val => !!val || 'Building No is required']" />
-                <q-input outlined v-model="floor" placeholder="Floor" :rules="[val => !!val || 'Floor is required']" />
+                <q-input outlined v-model="occupation_step_one.street_address" placeholder="Street Address" :rules="[val => !!val || 'Street Address is required']" />
+                <q-input outlined v-model="occupation_step_one.building_no" placeholder="Building No" :rules="[val => !!val || 'Building No is required']" />
+                <q-input outlined v-model="occupation_step_one.floor" placeholder="Floor" :rules="[val => !!val || 'Floor is required']" />
             </div>
             <div>
                 <span>Occupation</span>
-                <q-input outlined v-model="occupation" placeholder="Auto" :rules="[val => !!val || 'Occupation is required']" />
+                <q-input outlined v-model="occupation_step_one.occupation" placeholder="Auto" :rules="[val => !!val || 'Occupation is required']" />
             </div>
             <div>
                 <span>Company HR Name</span>
-                <q-input outlined v-model="HR_name" placeholder="HR Name" :rules="[val => !!val || 'HR Name is required']" />
+                <q-input outlined v-model="occupation_step_one.HR_name" placeholder="HR Name" :rules="[val => !!val || 'HR Name is required']" />
             </div>
             <div>
                 <span>HR Phone</span>
-                <q-input outlined v-model="HR_phone" mask="##-#########" placeholder="09-" :rules="[ val => val.length >= 12 || 'Please add minimum 11 numbers']" />
+                <q-input outlined v-model="occupation_step_one.HR_phone" mask="###########" placeholder="09-" :rules="[ val => val.length >= 7 && val.length <= 11 || 'Please add correct phone number']" />
             </div>
          </div>
       </div>
@@ -59,25 +59,27 @@
 export default {
    data() {
       return {
-        business_information: "",
-         region: "Choose",
          regions: [
             'Yangon', 'Mandalay', 'Naypitaw'
          ],
-         city: "Choose",
          cities: [
             'Yangon', 'Mandalay', 'Naypitaw'
          ],
-         township: "Choose",
          townships: [
             'Yangon', 'Mandalay', 'Naypitaw'
          ],
-         street_address: "",
-         building_no: "",
-         floor: "",
-         occupation: "",
-         HR_name: "",
-         HR_phone: "",
+         occupation_step_one: {
+            business_information: "",
+            region: "Choose",
+            city: "Choose",
+            township: "Choose",
+            street_address: "",
+            building_no: "",
+            floor: "",
+            occupation: "",
+            HR_name: "",
+            HR_phone: "",
+         }
       }
    },
 }
