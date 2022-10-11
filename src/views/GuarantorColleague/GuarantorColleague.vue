@@ -14,7 +14,7 @@
         :done="step > 1"
         title=""
       >
-        <colleague-step-one></colleague-step-one>
+        <colleague-step-one @stepOneCount="stepOneCount"></colleague-step-one>
       </q-step>
 
       <q-step
@@ -23,7 +23,7 @@
         :done="step > 2"
         title=""
       >
-        <colleague-step-two></colleague-step-two>
+        <colleague-step-two @stepTwoCount="stepTwoCount"></colleague-step-two>
       </q-step>
 
       <q-step
@@ -32,7 +32,7 @@
         :done="step > 3"
         title=""
       >
-        <colleague-step-three></colleague-step-three>
+        <colleague-step-three @stepThreeCount="stepThreeCount"></colleague-step-three>
       </q-step>
 
       <q-step
@@ -40,7 +40,7 @@
         prefix="4"
         title=""
       >
-        <colleague-step-four></colleague-step-four>
+        <colleague-step-four @stepFourCount="stepFourCount"></colleague-step-four>
       </q-step>
 
       <template v-slot:navigation>
@@ -97,11 +97,37 @@ export default {
     return {
       title: "Guarantor Colleague Information",
       step: 1,
+      one_count: "",
+      two_count: "",
+      three_count: "",
+      four_count: "",
     }
   },
   methods: {
+    stepOneCount(oneCount) {
+      this.one_count = oneCount;
+      console.log(this.one_count, "step one count");
+    },
+    stepTwoCount(twoCount) {
+      this.two_count = this.one_count + twoCount;
+      console.log(this.two_count, "step two count");
+    },
+    stepThreeCount(threeCount) {
+      this.three_count = this.two_count + threeCount;
+      console.log(this.three_count, "step three count");
+    },
+    stepFourCount(fourCount) {
+      this.four_count = this.three_count + fourCount;
+      console.log(this.four_count, "step four count");
+    },
     goSaveInformation() {
-      this.$router.push({ name: "SaveInformation" })
+      this.$router.push({ name: "SaveInformation" });
+      console.log(this.calculatePercentage);
+    }
+  },
+  computed: {
+    calculatePercentage() {
+      return (this.four_count/22)*100;
     }
   }
 }

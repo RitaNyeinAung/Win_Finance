@@ -40,7 +40,7 @@
         prefix="4"
         title=""
       >
-        <applicant-step-four></applicant-step-four>
+        <applicant-step-four @stepFourCount="stepFourCount"></applicant-step-four>
       </q-step>
 
       <template v-slot:navigation>
@@ -98,20 +98,31 @@ export default {
       title: "Applicant Information",
       step: 1,
       one_count: "",
-      two_count: "",
+      three_count: "",
+      four_count: "",
     }
   },
   methods: {
-    goSaveInformation() {
-      this.$router.push({ name: "SaveInformation" });
-    },
     stepOneCount(oneCount) {
       this.one_count = oneCount;
       console.log(this.one_count, "step one count");
     },
-    stepThreeCount(twoCount) {
-      this.two_count = this.one_count + twoCount;
-      console.log(this.two_count, "step two count");
+    stepThreeCount(threeCount) {
+      this.three_count = this.one_count + threeCount;
+      console.log(this.three_count, "step three count");
+    },
+    stepFourCount(fourCount) {
+      this.four_count = this.three_count + fourCount;
+      console.log(this.four_count, "step four count");
+    },
+    goSaveInformation() {
+      this.$router.push({ name: "SaveInformation" });
+      console.log(this.calculatePercentage);
+    }
+  },
+  computed: {
+    calculatePercentage() {
+      return (this.four_count/23)*100;
     }
   }
 }

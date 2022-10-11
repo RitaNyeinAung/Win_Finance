@@ -14,7 +14,7 @@
         :done="step > 1"
         title=""
       >
-        <family-step-one></family-step-one>
+        <family-step-one @stepOneCount="stepOneCount"></family-step-one>
       </q-step>
 
       <q-step
@@ -23,7 +23,7 @@
         :done="step > 2"
         title=""
       >
-        <family-step-two></family-step-two>
+        <family-step-two @stepTwoCount="stepTwoCount"></family-step-two>
       </q-step>
 
       <q-step
@@ -32,7 +32,7 @@
         :done="step > 3"
         title=""
       >
-        <family-step-three></family-step-three>
+        <family-step-three @stepThreeCount="stepThreeCount"></family-step-three>
       </q-step>
 
       <q-step
@@ -40,7 +40,7 @@
         prefix="4"
         title=""
       >
-        <family-step-four></family-step-four>
+        <family-step-four @stepFourCount="stepFourCount"></family-step-four>
       </q-step>
 
       <template v-slot:navigation>
@@ -97,11 +97,37 @@ export default {
     return {
       title: "Guarantor Family Information",
       step: 1,
+      one_count: "",
+      two_count: "",
+      three_count: "",
+      four_count: "",
     }
   },
   methods: {
+    stepOneCount(oneCount) {
+      this.one_count = oneCount;
+      console.log(this.one_count, "step one count");
+    },
+    stepTwoCount(twoCount) {
+      this.two_count = this.one_count + twoCount;
+      console.log(this.two_count, "step two count");
+    },
+    stepThreeCount(threeCount) {
+      this.three_count = this.two_count + threeCount;
+      console.log(this.three_count, "step three count");
+    },
+    stepFourCount(fourCount) {
+      this.four_count = this.three_count + fourCount;
+      console.log(this.four_count, "step four count");
+    },
     goSaveInformation() {
-      this.$router.push({ name: "SaveInformation" })
+      this.$router.push({ name: "SaveInformation" });
+      console.log(this.calculatePercentage);
+    }
+  },
+  computed: {
+    calculatePercentage() {
+      return (this.four_count/22)*100;
     }
   }
 }

@@ -114,10 +114,11 @@ export default {
       countValue(value) {
          if(value == "") {
          this.count -= 1;
+         this.$emit('stepTwoCount', this.count);
          } else {
          this.count += 1;
+         this.$emit('stepTwoCount', this.count);
          }
-         console.log(this.count, "count");
       }
   }
 }

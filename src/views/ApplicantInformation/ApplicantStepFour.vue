@@ -154,8 +154,10 @@ export default {
       countValue(value) {
          if(value == "") {
          this.count -= 1;
+         this.$emit('stepFourCount', this.count);
          } else {
          this.count += 1;
+         this.$emit('stepFourCount', this.count);
          }
       }
   }

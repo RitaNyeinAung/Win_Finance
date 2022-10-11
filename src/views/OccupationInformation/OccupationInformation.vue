@@ -14,7 +14,7 @@
         :done="step > 1"
         title=""
       >
-        <occupation-step-one></occupation-step-one>
+        <occupation-step-one @stepOneCount="stepOneCount"></occupation-step-one>
       </q-step>
 
       <q-step
@@ -23,7 +23,7 @@
         :done="step > 2"
         title=""
       >
-        <occupation-step-two></occupation-step-two>
+        <occupation-step-two @stepTwoCount="stepTwoCount"></occupation-step-two>
       </q-step>
 
       <template v-slot:navigation>
@@ -76,11 +76,27 @@ export default {
     return {
       title: "Occupation Information",
       step: 1,
+      one_count: "",
+      two_count: "",
     }
   },
   methods: {
+    stepOneCount(oneCount) {
+      this.one_count = oneCount;
+      console.log(this.one_count, "step one count");
+    },
+    stepTwoCount(twoCount) {
+      this.two_count = this.one_count + twoCount;
+      console.log(this.two_count, "step two count");
+    },
     goSaveInformation() {
-      this.$router.push({ name: "SaveInformation" })
+      this.$router.push({ name: "SaveInformation" });
+      console.log(this.calculatePercentage);
+    }
+  },
+  computed: {
+    calculatePercentage() {
+      return (this.two_count/15)*100;
     }
   }
 }

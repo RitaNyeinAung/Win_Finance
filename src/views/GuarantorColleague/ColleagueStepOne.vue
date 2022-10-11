@@ -136,10 +136,11 @@ export default {
         countValue(value) {
             if(value == "") {
                 this.count -= 1;
+                this.$emit('stepOneCount', this.count);
             } else {
                 this.count += 1;
+                this.$emit('stepOneCount', this.count);
             }
-            console.log(this.count, "count");
         }
     }
 }
