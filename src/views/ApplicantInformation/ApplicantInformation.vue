@@ -14,7 +14,7 @@
         :done="step > 1"
         title=""
       >
-        <applicant-step-one></applicant-step-one>
+        <applicant-step-one @stepOneCount="stepOneCount"></applicant-step-one>
       </q-step>
 
       <q-step
@@ -32,7 +32,7 @@
         :done="step > 3"
         title=""
       >
-        <applicant-step-three></applicant-step-three>
+        <applicant-step-three @stepThreeCount="stepThreeCount"></applicant-step-three>
       </q-step>
 
       <q-step
@@ -46,9 +46,32 @@
       <template v-slot:navigation>
         <q-stepper-navigation>
           <div class="button_group text-center q-mt-md">
-            <q-btn v-if="step > 1" @click="$refs.stepper.previous()" class="custom_button" text-color="black" label="Back" no-caps />
-            <q-btn v-if="step != 4" @click="$refs.stepper.next()" class="custom_button" text-color="black" label="Next" no-caps />
-            <q-btn v-if="step === 4" @click="goSaveInformation" class="custom_button" text-color="black" label="Submit" no-caps />
+            <q-btn 
+              v-if="step > 1" 
+              @click="$refs.stepper.previous()" 
+              class="custom_button" 
+              text-color="black" 
+              label="Back" 
+              no-caps 
+            />
+            
+            <q-btn 
+              v-if="step != 4" 
+              @click="$refs.stepper.next()" 
+              class="custom_button" 
+              text-color="black" 
+              label="Next" 
+              no-caps 
+            />
+
+            <q-btn 
+              v-if="step === 4" 
+              @click="goSaveInformation" 
+              class="custom_button" 
+              text-color="black" 
+              label="Submit" 
+              no-caps 
+            />
           </div>
         </q-stepper-navigation>
       </template>
@@ -74,11 +97,21 @@ export default {
     return {
       title: "Applicant Information",
       step: 1,
+      one_count: "",
+      two_count: "",
     }
   },
   methods: {
     goSaveInformation() {
-      this.$router.push({ name: "SaveInformation" })
+      this.$router.push({ name: "SaveInformation" });
+    },
+    stepOneCount(oneCount) {
+      this.one_count = oneCount;
+      console.log(this.one_count, "step one count");
+    },
+    stepThreeCount(twoCount) {
+      this.two_count = this.one_count + twoCount;
+      console.log(this.two_count, "step two count");
     }
   }
 }

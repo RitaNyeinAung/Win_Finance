@@ -4,15 +4,35 @@
             <p class="title_color">Emergency Contact</p>
             <div>
                <span>Name</span>
-               <q-input outlined v-model="applicant_step_four.emergency_name" placeholder="Full Name" :rules="[val => !!val || 'Name is required']" />
+               <q-input 
+                  outlined 
+                  v-model="applicant_step_four.emergency_name" 
+                  @change="countValue($event)" 
+                  placeholder="Full Name" 
+                  :rules="[val => !!val || 'Name is required']" 
+               />
             </div>
             <div>
                <span>Phone</span>
-               <q-input outlined v-model="applicant_step_four.emergency_phone_num" mask="###########" placeholder="09-" :rules="[ val => val.length >= 7 && val.length <= 11 || 'Please add correct phone number']" />
+               <q-input 
+                  outlined 
+                  v-model="applicant_step_four.emergency_phone_num" 
+                  @change="countValue($event)" 
+                  mask="###########" 
+                  placeholder="09-" 
+                  :rules="[ val => val.length >= 7 && val.length <= 11 || 'Please add correct phone number']" 
+               />
             </div>
             <div>
                <span>Mobile</span>
-               <q-input outlined v-model="applicant_step_four.emergency_mobile" mask="###########" placeholder="09-" :rules="[ val => val.length >= 7 && val.length <= 11 || 'Please add correct phone number']" />
+               <q-input 
+                  outlined 
+                  v-model="applicant_step_four.emergency_mobile" 
+                  @change="countValue($event)" 
+                  mask="###########" 
+                  placeholder="09-" 
+                  :rules="[ val => val.length >= 7 && val.length <= 11 || 'Please add correct phone number']" 
+               />
             </div>
             <p class="title_color">Address Of Contact Person</p>
             <div>
@@ -49,10 +69,34 @@
                      <q-radio dense v-model="applicant_step_four.ward_village_radio" val="Ward" label="Ward" style="width: 60%;" />
                      <q-radio dense v-model="applicant_step_four.ward_village_radio" val="Village" label="Village" />
                   </div>
-                  <q-input outlined v-model="applicant_step_four.ward_village_input" placeholder="Ward/Village" :rules="[val => !!val || 'Ward/Village is required']" />
-                  <q-input outlined v-model="applicant_step_four.street_address" placeholder="Street Address" :rules="[val => !!val || 'Street Address is required']" />
-                  <q-input outlined v-model="applicant_step_four.building_no" placeholder="Building No" :rules="[val => !!val || 'Building No is required']" />
-                  <q-input outlined v-model="applicant_step_four.floor" placeholder="Floor" :rules="[val => !!val || 'Floor is required']" />
+                  <q-input 
+                     outlined 
+                     v-model="applicant_step_four.ward_village_input" 
+                     @change="countValue($event)" 
+                     placeholder="Ward/Village" 
+                     :rules="[val => !!val || 'Ward/Village is required']" 
+                  />
+                  <q-input 
+                     outlined 
+                     v-model="applicant_step_four.street_address" 
+                     @change="countValue($event)" 
+                     placeholder="Street Address" 
+                     :rules="[val => !!val || 'Street Address is required']" 
+                  />
+                  <q-input 
+                     outlined 
+                     v-model="applicant_step_four.building_no" 
+                     @change="countValue($event)" 
+                     placeholder="Building No" 
+                     :rules="[val => !!val || 'Building No is required']" 
+                  />
+                  <q-input 
+                     outlined 
+                     v-model="applicant_step_four.floor" 
+                     @change="countValue($event)" 
+                     placeholder="Floor" 
+                     :rules="[val => !!val || 'Floor is required']" 
+                  />
                </div>
             </div>
             <div class="q-mb-md">
@@ -89,6 +133,7 @@ export default {
          townships: [
             'Yangon', 'Mandalay', 'Naypitaw'
          ],
+         count: 0,
          applicant_step_four: {
             emergency_name: "",
             emergency_phone_num: "",
@@ -105,6 +150,15 @@ export default {
          }
       }
    },
+   methods: {
+      countValue(value) {
+         if(value == "") {
+         this.count -= 1;
+         } else {
+         this.count += 1;
+         }
+      }
+  }
 }
 </script>
 

@@ -3,16 +3,34 @@
          <div class="q-gutter-lg">
             <p class="title_color">Guarantor's Company Informations</p>
             <div>
-                <span>Company Name</span>
-                <q-input outlined v-model="family_step_three.company_name" placeholder="Company Name" :rules="[val => !!val || 'Company Name is required']" />
+               <span>Company Name</span>
+               <q-input 
+                  outlined 
+                  v-model="family_step_three.company_name" 
+                  @change="countValue($event)"
+                  placeholder="Company Name" 
+                  :rules="[val => !!val || 'Company Name is required']" 
+               />
             </div>
             <div>
-                <span>Department Name</span>
-                <q-input outlined v-model="family_step_three.department_name" placeholder="Department Name" :rules="[val => !!val || 'Department Name is required']" />
+               <span>Department Name</span>
+               <q-input 
+                  outlined 
+                  v-model="family_step_three.department_name" 
+                  @change="countValue($event)"
+                  placeholder="Department Name" 
+                  :rules="[val => !!val || 'Department Name is required']" 
+               />
             </div>
             <div>
-                <span>Position</span>
-                <q-input outlined v-model="family_step_three.position" placeholder="Position" :rules="[val => !!val || 'Position is required']" />
+               <span>Position</span>
+               <q-input 
+                  outlined 
+                  v-model="family_step_three.position" 
+                  @change="countValue($event)"
+                  placeholder="Position" 
+                  :rules="[val => !!val || 'Position is required']" 
+               />
             </div>
             <p class="title_color">Guarantor's Company Address Informations</p>
             <div>
@@ -45,15 +63,39 @@
             <div class="q-mb-md q-mt-xl">
                <span>Ward or Village?</span>
                <div class="q-mt-md">
-                    <div class="q-mb-lg">
-                        <q-radio dense v-model="family_step_three.ward_village_radio" val="Ward" label="Ward" style="width: 60%;" />
-                        <q-radio dense v-model="family_step_three.ward_village_radio" val="Village" label="Village" />
-                    </div>
-                    <q-input outlined v-model="family_step_three.ward_village_input" placeholder="Ward/Village" :rules="[val => !!val || 'Ward/Village is required']" />
-                    <q-input outlined v-model="family_step_three.street_address" placeholder="Street Address" :rules="[val => !!val || 'Street Address is required']" />
-                    <q-input outlined v-model="family_step_three.building_no" placeholder="Building No" :rules="[val => !!val || 'Building No is required']" />
-                    <q-input outlined v-model="family_step_three.floor" placeholder="Floor" :rules="[val => !!val || 'Floor is required']" />
-                </div>
+                  <div class="q-mb-lg">
+                     <q-radio dense v-model="family_step_three.ward_village_radio" val="Ward" label="Ward" style="width: 60%;" />
+                     <q-radio dense v-model="family_step_three.ward_village_radio" val="Village" label="Village" />
+                  </div>
+                  <q-input 
+                     outlined 
+                     v-model="family_step_three.ward_village_input" 
+                     @change="countValue($event)"
+                     placeholder="Ward/Village" 
+                     :rules="[val => !!val || 'Ward/Village is required']" 
+                  />
+                  <q-input 
+                     outlined 
+                     v-model="family_step_three.street_address" 
+                     @change="countValue($event)"
+                     placeholder="Street Address" 
+                     :rules="[val => !!val || 'Street Address is required']" 
+                  />
+                  <q-input 
+                     outlined 
+                     v-model="family_step_three.building_no" 
+                     @change="countValue($event)"
+                     placeholder="Building No" 
+                     :rules="[val => !!val || 'Building No is required']" 
+                  />
+                  <q-input 
+                     outlined 
+                     v-model="family_step_three.floor" 
+                     @change="countValue($event)"
+                     placeholder="Floor" 
+                     :rules="[val => !!val || 'Floor is required']" 
+                  />
+               </div>
             </div>
          </div>
       </div>
@@ -72,6 +114,7 @@ export default {
         townships: [
         'Yangon', 'Mandalay', 'Naypitaw'
         ],
+        count: 0,
         family_step_three: {
          company_name: "",
          department_name: "",
@@ -87,6 +130,16 @@ export default {
         }
       }
    },
+   methods: {
+      countValue(value) {
+         if(value == "") {
+            this.count -= 1;
+         } else {
+            this.count += 1;
+         }
+         console.log(this.count, "count");
+      }
+   }
 }
 </script>
 

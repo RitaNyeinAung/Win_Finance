@@ -4,15 +4,34 @@
             <p class="title_color">Guarantor's Personal Informations</p>
             <div>
                 <span>Name</span>
-                <q-input outlined v-model="colleague_step_one.guarantor_name" placeholder="Name" :rules="[val => !!val || 'Name is required']" />
+                <q-input 
+                    outlined 
+                    v-model="colleague_step_one.guarantor_name" 
+                    @change="countValue($event)"
+                    placeholder="Name" 
+                    :rules="[val => !!val || 'Name is required']" 
+                />
             </div>
             <div>
                 <span>Phone Number</span>
-                <q-input outlined v-model="colleague_step_one.guarantor_phone" mask="###########" placeholder="09-" :rules="[ val => val.length >= 7 && val.length <= 11 || 'Please add correct phone number']" />
+                <q-input 
+                    outlined 
+                    v-model="colleague_step_one.guarantor_phone" 
+                    @change="countValue($event)"
+                    mask="###########" 
+                    placeholder="09-" 
+                    :rules="[ val => val.length >= 7 && val.length <= 11 || 'Please add correct phone number']" 
+                />
             </div>
             <div>
                 <span>Date of Birth</span>
-                <q-input outlined v-model="colleague_step_one.guarantor_birth_date" type="date" :rules="[val => !!val || 'Birth Date is required']" />
+                <q-input 
+                    outlined 
+                    v-model="colleague_step_one.guarantor_birth_date" 
+                    @change="countValue($event)"
+                    type="date" 
+                    :rules="[val => !!val || 'Birth Date is required']" 
+                />
             </div>
             <div>
                 <label>NRC Number</label>
@@ -35,7 +54,14 @@
                     :options="nationals"
                     style="width: 25%;"
                 />
-                <q-input outlined v-model="colleague_step_one.nrc_num" mask="######" style="width: 100%; margin-left: 5px;" :rules="[ val => val.length >= 6 || 'Please add minimum 6 numbers']" />
+                <q-input 
+                    outlined 
+                    v-model="colleague_step_one.nrc_num" 
+                    @change="countValue($event)"
+                    mask="######" 
+                    style="width: 100%; margin-left: 5px;" 
+                    :rules="[ val => val.length >= 6 || 'Please add minimum 6 numbers']" 
+                />
                 </div>
             </div>
             <div class="q-mb-lg">
@@ -80,31 +106,42 @@
 
 <script>
 export default {
-   data() {
-      return {
-        states: [
-            '1/', '2/', '3/', '4/', '5/'
-        ],
-        townships: [
-            'MaAhNa', 'AhGaPa'
-        ],
-        nationals: [
-            '(N)', 'Other'
-        ],
-        colleague_step_one: {
-            guarantor_name: "",
-            guarantor_phone: "",
-            guarantor_birth_date: "",
-            state_num: "1/",
-            township_name: "YaMaNa",
-            national: "(N)",
-            nrc_num: "",
-            nationality: "Myanmar",
-            gender: "Male",
-            marital_status: "Single",
+    data() {
+        return {
+            states: [
+                '1/', '2/', '3/', '4/', '5/'
+            ],
+            townships: [
+                'MaAhNa', 'AhGaPa'
+            ],
+            nationals: [
+                '(N)', 'Other'
+            ],
+            count: 0,
+            colleague_step_one: {
+                guarantor_name: "",
+                guarantor_phone: "",
+                guarantor_birth_date: "",
+                state_num: "1/",
+                township_name: "YaMaNa",
+                national: "(N)",
+                nrc_num: "",
+                nationality: "Myanmar",
+                gender: "Male",
+                marital_status: "Single",
+            }
         }
-      }
-   },
+    },
+    methods: {
+        countValue(value) {
+            if(value == "") {
+                this.count -= 1;
+            } else {
+                this.count += 1;
+            }
+            console.log(this.count, "count");
+        }
+    }
 }
 </script>
 

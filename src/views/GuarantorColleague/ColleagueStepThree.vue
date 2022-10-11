@@ -4,15 +4,33 @@
             <p class="title_color">Guarantor's Company Informations</p>
             <div>
                 <span>Company Name</span>
-                <q-input outlined v-model="colleague_step_three.company_name" placeholder="Company Name" :rules="[val => !!val || 'Company Name is required']" />
+                <q-input 
+                  outlined 
+                  v-model="colleague_step_three.company_name" 
+                  @change="countValue($event)"
+                  placeholder="Company Name" 
+                  :rules="[val => !!val || 'Company Name is required']" 
+               />
             </div>
             <div>
                 <span>Department Name</span>
-                <q-input outlined v-model="colleague_step_three.department_name" placeholder="Department Name" :rules="[val => !!val || 'Department Name is required']" />
+                <q-input 
+                  outlined 
+                  v-model="colleague_step_three.department_name" 
+                  @change="countValue($event)"
+                  placeholder="Department Name" 
+                  :rules="[val => !!val || 'Department Name is required']" 
+               />
             </div>
             <div>
                 <span>Position</span>
-                <q-input outlined v-model="colleague_step_three.position" placeholder="Position" :rules="[val => !!val || 'Position is required']" />
+                <q-input 
+                  outlined 
+                  v-model="colleague_step_three.position" 
+                  @change="countValue($event)"
+                  placeholder="Position" 
+                  :rules="[val => !!val || 'Position is required']" 
+               />
             </div>
             <p class="title_color">Guarantor's Company Address Informations</p>
             <div>
@@ -49,10 +67,34 @@
                         <q-radio dense v-model="colleague_step_three.ward_village_radio" val="Ward" label="Ward" style="width: 60%;" />
                         <q-radio dense v-model="colleague_step_three.ward_village_radio" val="Village" label="Village" />
                     </div>
-                    <q-input outlined v-model="colleague_step_three.ward_village_input" placeholder="Ward/Village" :rules="[val => !!val || 'Ward/Village is required']" />
-                    <q-input outlined v-model="colleague_step_three.street_address" placeholder="Street Address" :rules="[val => !!val || 'Street Address is required']" />
-                    <q-input outlined v-model="colleague_step_three.building_no" placeholder="Building No" :rules="[val => !!val || 'Building No is required']" />
-                    <q-input outlined v-model="colleague_step_three.floor" placeholder="Floor" :rules="[val => !!val || 'Floor is required']" />
+                    <q-input 
+                     outlined 
+                     v-model="colleague_step_three.ward_village_input" 
+                     @change="countValue($event)"
+                     placeholder="Ward/Village" 
+                     :rules="[val => !!val || 'Ward/Village is required']" 
+                  />
+                    <q-input 
+                     outlined 
+                     v-model="colleague_step_three.street_address" 
+                     @change="countValue($event)"
+                     placeholder="Street Address" 
+                     :rules="[val => !!val || 'Street Address is required']" 
+                  />
+                    <q-input 
+                     outlined 
+                     v-model="colleague_step_three.building_no" 
+                     @change="countValue($event)"
+                     placeholder="Building No" 
+                     :rules="[val => !!val || 'Building No is required']" 
+                  />
+                    <q-input 
+                     outlined 
+                     v-model="colleague_step_three.floor" 
+                     @change="countValue($event)"
+                     placeholder="Floor" 
+                     :rules="[val => !!val || 'Floor is required']" 
+                  />
                 </div>
             </div>
          </div>
@@ -63,30 +105,41 @@
 export default {
    data() {
       return {
-        regions: [
-        'Yangon', 'Mandalay', 'Naypitaw'
-        ],
-        cities: [
-        'Yangon', 'Mandalay', 'Naypitaw'
-        ],
-        townships: [
-        'Yangon', 'Mandalay', 'Naypitaw'
-        ],
-        colleague_step_three: {
-         company_name: "",
-         department_name: "",
-         position: "",
-         region: "Choose",
-         city: "Choose",
-         township: "Choose",
-         ward_village_radio: "Ward",
-         ward_village_input: "",
-         street_address: "",
-         building_no: "",
-         floor: "",
-        }
+         regions: [
+         'Yangon', 'Mandalay', 'Naypitaw'
+         ],
+         cities: [
+         'Yangon', 'Mandalay', 'Naypitaw'
+         ],
+         townships: [
+         'Yangon', 'Mandalay', 'Naypitaw'
+         ],
+         count: 0,
+         colleague_step_three: {
+            company_name: "",
+            department_name: "",
+            position: "",
+            region: "Choose",
+            city: "Choose",
+            township: "Choose",
+            ward_village_radio: "Ward",
+            ward_village_input: "",
+            street_address: "",
+            building_no: "",
+            floor: "",
+         }
       }
    },
+   methods: {
+      countValue(value) {
+         if(value == "") {
+               this.count -= 1;
+         } else {
+               this.count += 1;
+         }
+         console.log(this.count, "count");
+      }
+   }
 }
 </script>
 

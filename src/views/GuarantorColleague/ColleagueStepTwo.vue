@@ -52,10 +52,34 @@
                         <q-radio dense v-model="colleague_step_two.ward_village_radio" val="Ward" label="Ward" style="width: 60%;" />
                         <q-radio dense v-model="colleague_step_two.ward_village_radio" val="Village" label="Village" />
                     </div>
-                    <q-input outlined v-model="colleague_step_two.ward_village_input" placeholder="Ward/Village" :rules="[val => !!val || 'Ward/Village is required']" />
-                    <q-input outlined v-model="colleague_step_two.street_address" placeholder="Street Address" :rules="[val => !!val || 'Street Address is required']" />
-                    <q-input outlined v-model="colleague_step_two.building_no" placeholder="Building No" :rules="[val => !!val || 'Building No is required']" />
-                    <q-input outlined v-model="colleague_step_two.floor" placeholder="Floor" :rules="[val => !!val || 'Floor is required']" />
+                    <q-input 
+                        outlined 
+                        v-model="colleague_step_two.ward_village_input" 
+                        @change="countValue($event)"
+                        placeholder="Ward/Village" 
+                        :rules="[val => !!val || 'Ward/Village is required']" 
+                    />
+                    <q-input 
+                        outlined 
+                        v-model="colleague_step_two.street_address" 
+                        @change="countValue($event)"
+                        placeholder="Street Address" 
+                        :rules="[val => !!val || 'Street Address is required']" 
+                    />
+                    <q-input 
+                        outlined 
+                        v-model="colleague_step_two.building_no" 
+                        @change="countValue($event)"
+                        placeholder="Building No" 
+                        :rules="[val => !!val || 'Building No is required']" 
+                    />
+                    <q-input 
+                        outlined 
+                        v-model="colleague_step_two.floor" 
+                        @change="countValue($event)"
+                        placeholder="Floor" 
+                        :rules="[val => !!val || 'Floor is required']" 
+                    />
                 </div>
             </div>
             <div class="q-mb-xl">
@@ -95,8 +119,23 @@
                         <label style="width: 50%;">Months</label>
                     </div>
                     <div style="display: flex">
-                        <q-input class="q-mr-sm" outlined v-model="colleague_step_two.years_stay" placeholder="..." style="width: 50%;" :rules="[val => !!val || 'Year is required']" />
-                        <q-input outlined v-model="colleague_step_two.months_stay" placeholder="..." style="width: 50%;" :rules="[val => !!val || 'Month is required']" />
+                        <q-input 
+                            outlined 
+                            class="q-mr-sm" 
+                            v-model="colleague_step_two.years_stay" 
+                            @change="countValue($event)"
+                            placeholder="..." 
+                            style="width: 50%;" 
+                            :rules="[val => !!val || 'Year is required']" 
+                        />
+                        <q-input 
+                            outlined 
+                            v-model="colleague_step_two.months_stay" 
+                            @change="countValue($event)"
+                            placeholder="..." 
+                            style="width: 50%;" 
+                            :rules="[val => !!val || 'Month is required']" 
+                        />
                     </div>
                </div>
             </div>
@@ -106,34 +145,45 @@
 
 <script>
 export default {
-   data() {
-      return {
-        regions: [
-            'Yangon', 'Mandalay', 'Naypitaw'
-        ],
-        cities: [
-            'Yangon', 'Mandalay', 'Naypitaw'
-        ],
-        townships: [
-            'Yangon', 'Mandalay', 'Naypitaw'
-        ],
-        colleague_step_two: {
-            relationship_applicant: "Parent",
-            region: "Choose",
-            city: "Choose",
-            township: "Choose",
-            ward_village_radio: "Ward",
-            ward_village_input: "",
-            street_address: "",
-            building_no: "",
-            floor: "",
-            residence_type: "Owner",
-            living_with: "Parent",
-            years_stay: "",
-            months_stay: "",
+    data() {
+        return {
+            regions: [
+                'Yangon', 'Mandalay', 'Naypitaw'
+            ],
+            cities: [
+                'Yangon', 'Mandalay', 'Naypitaw'
+            ],
+            townships: [
+                'Yangon', 'Mandalay', 'Naypitaw'
+            ],
+            count: 0,
+            colleague_step_two: {
+                relationship_applicant: "Parent",
+                region: "Choose",
+                city: "Choose",
+                township: "Choose",
+                ward_village_radio: "Ward",
+                ward_village_input: "",
+                street_address: "",
+                building_no: "",
+                floor: "",
+                residence_type: "Owner",
+                living_with: "Parent",
+                years_stay: "",
+                months_stay: "",
+            }
         }
-      }
-   },
+    },
+    methods: {
+        countValue(value) {
+            if(value == "") {
+                this.count -= 1;
+            } else {
+                this.count += 1;
+            }
+            console.log(this.count, "count");
+        }
+   }
 }
 </script>
 

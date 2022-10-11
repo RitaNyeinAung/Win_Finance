@@ -4,7 +4,12 @@
             <p class="title_color">Occupation's Company Informations</p>
             <div>
                 <span>Company Name / Business Information</span>
-                <q-input outlined v-model="occupation_step_one.business_information" :rules="[val => !!val || 'Company Name / Business Information is required']" />
+                <q-input 
+                  outlined 
+                  v-model="occupation_step_one.business_information" 
+                  @change="countValue($event)"
+                  :rules="[val => !!val || 'Company Name / Business Information is required']" 
+               />
             </div>
             <p class="title_color">Occupation's Company Address Informations</p>
             <div>
@@ -35,21 +40,58 @@
                </div>
             </div>
             <div class="q-mt-md">
-                <q-input outlined v-model="occupation_step_one.street_address" placeholder="Street Address" :rules="[val => !!val || 'Street Address is required']" />
-                <q-input outlined v-model="occupation_step_one.building_no" placeholder="Building No" :rules="[val => !!val || 'Building No is required']" />
-                <q-input outlined v-model="occupation_step_one.floor" placeholder="Floor" :rules="[val => !!val || 'Floor is required']" />
+                <q-input 
+                  outlined 
+                  v-model="occupation_step_one.street_address" 
+                  @change="countValue($event)"
+                  placeholder="Street Address" 
+                  :rules="[val => !!val || 'Street Address is required']" 
+               />
+                <q-input 
+                  outlined 
+                  v-model="occupation_step_one.building_no" 
+                  @change="countValue($event)"
+                  placeholder="Building No" 
+                  :rules="[val => !!val || 'Building No is required']" 
+               />
+                <q-input 
+                  outlined 
+                  v-model="occupation_step_one.floor" 
+                  @change="countValue($event)"
+                  placeholder="Floor" 
+                  :rules="[val => !!val || 'Floor is required']" 
+               />
             </div>
             <div>
                 <span>Occupation</span>
-                <q-input outlined v-model="occupation_step_one.occupation" placeholder="Auto" :rules="[val => !!val || 'Occupation is required']" />
+                <q-input 
+                  outlined 
+                  v-model="occupation_step_one.occupation" 
+                  @change="countValue($event)"
+                  placeholder="Auto" 
+                  :rules="[val => !!val || 'Occupation is required']" 
+               />
             </div>
             <div>
                 <span>Company HR Name</span>
-                <q-input outlined v-model="occupation_step_one.HR_name" placeholder="HR Name" :rules="[val => !!val || 'HR Name is required']" />
+                <q-input 
+                  outlined 
+                  v-model="occupation_step_one.HR_name" 
+                  @change="countValue($event)"
+                  placeholder="HR Name" 
+                  :rules="[val => !!val || 'HR Name is required']" 
+               />
             </div>
             <div>
                 <span>HR Phone</span>
-                <q-input outlined v-model="occupation_step_one.HR_phone" mask="###########" placeholder="09-" :rules="[ val => val.length >= 7 && val.length <= 11 || 'Please add correct phone number']" />
+                <q-input 
+                  outlined 
+                  v-model="occupation_step_one.HR_phone" 
+                  @change="countValue($event)"
+                  mask="###########" 
+                  placeholder="09-" 
+                  :rules="[ val => val.length >= 7 && val.length <= 11 || 'Please add correct phone number']" 
+               />
             </div>
          </div>
       </div>
@@ -68,6 +110,7 @@ export default {
          townships: [
             'Yangon', 'Mandalay', 'Naypitaw'
          ],
+         count: 0,
          occupation_step_one: {
             business_information: "",
             region: "Choose",
@@ -82,6 +125,16 @@ export default {
          }
       }
    },
+   methods: {
+      countValue(value) {
+         if(value == "") {
+         this.count -= 1;
+         } else {
+         this.count += 1;
+         }
+         console.log(this.count, "count");
+      }
+  }
 }
 </script>
 

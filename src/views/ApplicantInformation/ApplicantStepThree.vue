@@ -36,10 +36,34 @@
                      <q-radio dense v-model="applicant_step_three.ward_village_radio" val="Ward" label="Ward" style="width: 60%;" />
                      <q-radio dense v-model="applicant_step_three.ward_village_radio" val="Village" label="Village" />
                   </div>
-                  <q-input outlined v-model="applicant_step_three.ward_village_input" placeholder="Ward/Village" :rules="[val => !!val || 'Ward/Village is required']" />
-                  <q-input outlined v-model="applicant_step_three.street_address" placeholder="Street Address" :rules="[val => !!val || 'Street Address is required']" />
-                  <q-input outlined v-model="applicant_step_three.building_no" placeholder="Building No" :rules="[val => !!val || 'Building No is required']" />
-                  <q-input outlined v-model="applicant_step_three.floor" placeholder="Floor" :rules="[val => !!val || 'Floor is required']" />
+                  <q-input 
+                     outlined 
+                     v-model="applicant_step_three.ward_village_input" 
+                     @change="countValue($event)" 
+                     placeholder="Ward/Village" 
+                     :rules="[val => !!val || 'Ward/Village is required']" 
+                  />
+                  <q-input 
+                     outlined 
+                     v-model="applicant_step_three.street_address" 
+                     @change="countValue($event)" 
+                     placeholder="Street Address" 
+                     :rules="[val => !!val || 'Street Address is required']" 
+                  />
+                  <q-input 
+                     outlined 
+                     v-model="applicant_step_three.building_no" 
+                     @change="countValue($event)" 
+                     placeholder="Building No" 
+                     :rules="[val => !!val || 'Building No is required']" 
+                  />
+                  <q-input 
+                     outlined 
+                     v-model="applicant_step_three.floor" 
+                     @change="countValue($event)" 
+                     placeholder="Floor" 
+                     :rules="[val => !!val || 'Floor is required']" 
+                  />
                </div>
             </div>
             <div class="q-mb-xl">
@@ -79,8 +103,22 @@
                      <label style="width: 50%;">Months</label>
                   </div>
                   <div style="display: flex">
-                     <q-input class="q-mr-sm" outlined v-model="applicant_step_three.years_stay" placeholder="..." style="width: 50%;" :rules="[val => !!val || 'Year is required']" />
-                     <q-input outlined v-model="applicant_step_three.months_stay" placeholder="..." style="width: 50%;" :rules="[val => !!val || 'Month is required']" />
+                     <q-input 
+                        outlined 
+                        class="q-mr-sm" 
+                        v-model="applicant_step_three.years_stay" 
+                        @change="countValue($event)" 
+                        placeholder="..." style="width: 50%;" 
+                        :rules="[val => !!val || 'Year is required']" 
+                     />
+                     <q-input 
+                        outlined 
+                        v-model="applicant_step_three.months_stay" 
+                        @change="countValue($event)" 
+                        placeholder="..." 
+                        style="width: 50%;" 
+                        :rules="[val => !!val || 'Month is required']" 
+                     />
                   </div>
                </div>
             </div>
@@ -101,6 +139,7 @@ export default {
          townships: [
             'Yangon', 'Mandalay', 'Naypitaw'
          ],
+         count: 0,
          applicant_step_three: {
             region: "Choose",
             city: "Choose",
@@ -117,6 +156,17 @@ export default {
          }
       }
    },
+   methods: {
+      countValue(value) {
+         if(value == "") {
+         this.count -= 1;
+         this.$emit('stepThreeCount', this.count);
+         } else {
+         this.count += 1;
+         this.$emit('stepThreeCount', this.count);
+         }
+      }
+  }
 }
 </script>
 

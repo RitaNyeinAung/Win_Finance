@@ -29,9 +29,32 @@
       <template v-slot:navigation>
         <q-stepper-navigation>
           <div class="button_group text-center q-mt-md">
-            <q-btn v-if="step > 1" @click="$refs.stepper.previous()" class="custom_button" text-color="black" label="Back" no-caps />
-            <q-btn v-if="step != 2" @click="$refs.stepper.next()" class="custom_button" text-color="black" label="Next" no-caps />
-            <q-btn v-if="step === 2" @click="goSaveInformation" class="custom_button" text-color="black" label="Submit" no-caps />
+            <q-btn 
+              v-if="step > 1" 
+              @click="$refs.stepper.previous()" 
+              class="custom_button" 
+              text-color="black" 
+              label="Back" 
+              no-caps 
+            />
+
+            <q-btn 
+              v-if="step != 2" 
+              @click="$refs.stepper.next()" 
+              class="custom_button" 
+              text-color="black" 
+              label="Next" 
+              no-caps 
+            />
+
+            <q-btn 
+              v-if="step === 2" 
+              @click="goSaveInformation" 
+              class="custom_button" 
+              text-color="black" 
+              label="Submit" 
+              no-caps 
+            />
           </div>
         </q-stepper-navigation>
       </template>
